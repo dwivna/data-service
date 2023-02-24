@@ -1,7 +1,9 @@
 package com.dwivna.data.service.dataservice.controllers;
 
+import com.dwivna.data.service.dataservice.models.Data;
 import com.dwivna.data.service.dataservice.models.Month;
 import com.dwivna.data.service.dataservice.models.SavingsScheme;
+import com.dwivna.data.service.dataservice.models.Storage;
 import com.dwivna.data.service.dataservice.services.IEnDataService;
 import com.dwivna.data.service.dataservice.vo.DataVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class EnDataController {
     public DataVO getData() {
         List<Month> months = dataService.getMonths();
         List<SavingsScheme> savingsSchemes = dataService.getSavingsScheme();
-        return new DataVO(months, savingsSchemes);
+        List<Storage> storages = dataService.getStorage();
+        List<Data> data = dataService.getData();
+        return new DataVO(months, savingsSchemes,storages,data);
     }
 }
