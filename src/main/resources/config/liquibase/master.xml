@@ -8,4 +8,8 @@
              relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/insert/20230224_insert_storage.xml"
              relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/create/20230228_income_tables.xml"
+             relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/create/20230301_income_tables_part2.xml"
+             relativeToChangelogFile="false"/>
 </databaseChangeLog>

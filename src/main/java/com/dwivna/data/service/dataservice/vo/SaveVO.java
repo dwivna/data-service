@@ -5,14 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+import java.util.Map;
+
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class MonthDisplayVO {
-
-    private Integer monthId;
-    private Integer displayOrder;
-    private String monthName;
-    private String monthCode;
+@NoArgsConstructor
+public class SaveVO {
+    Map<Integer, List<StorageVO>> personalStorages;
+    Map<Integer, List<DeductionVO>> personalDeductions;
 }

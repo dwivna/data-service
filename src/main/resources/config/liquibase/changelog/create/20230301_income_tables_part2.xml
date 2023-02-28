@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--Added the entity salary_earning_t-->
+    <changeSet id="20230301-1" author="dwivna">
+        <createTable tableName="salary_earning_t">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="person_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="person_t" foreignKeyName="id"/>
+            </column>
+            <column name="fy_id" type="varchar(255)">
+                <constraints nullable="true" referencedTableName="financial_year_t" foreignKeyName="id"/>
+            </column>
+            <column name="month_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="en_month_t" foreignKeyName="id"/>
+            </column>
+            <column name="basic_pay" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="special_allowance" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="house_rent_allowance" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_allowance" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <!--Added the entity salary_deduction_t-->
+    <changeSet id="20230301-2" author="dwivna">
+        <createTable tableName="salary_deduction_t">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="person_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="person_t" foreignKeyName="id"/>
+            </column>
+            <column name="fy_id" type="varchar(255)">
+                <constraints nullable="true" referencedTableName="financial_year_t" foreignKeyName="id"/>
+            </column>
+            <column name="month_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="en_month_t" foreignKeyName="id"/>
+            </column>
+            <column name="deduction_for" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deduction_amount" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <!--Added the entity personal_storage_t-->
+    <changeSet id="20230301-3" author="dwivna">
+        <createTable tableName="personal_storage_t">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="person_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="person_t" foreignKeyName="id"/>
+            </column>
+            <column name="fy_id" type="varchar(255)">
+                <constraints nullable="true" referencedTableName="financial_year_t" foreignKeyName="id"/>
+            </column>
+            <column name="month_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="en_month_t" foreignKeyName="id"/>
+            </column>
+            <column name="store_in" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="store_amount" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <!--Added the entity personal_want_t-->
+    <changeSet id="20230301-4" author="dwivna">
+        <createTable tableName="personal_want_t">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="person_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="person_t" foreignKeyName="id"/>
+            </column>
+            <column name="fy_id" type="varchar(255)">
+                <constraints nullable="true" referencedTableName="financial_year_t" foreignKeyName="id"/>
+            </column>
+            <column name="month_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="en_month_t" foreignKeyName="id"/>
+            </column>
+            <column name="category" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="want_for" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="want_amount" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

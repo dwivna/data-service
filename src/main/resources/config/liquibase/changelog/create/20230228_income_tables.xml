@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--Added the entity financial_year_t-->
+    <changeSet id="20230228-1" author="dwivna">
+        <createTable tableName="financial_year_t">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="financial_year" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <!--Added the entity person_t-->
+    <changeSet id="20230228-2" author="dwivna">
+        <createTable tableName="person_t">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="middle_name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <!--Added the entity personal_deduction_t-->
+    <changeSet id="20230228-3" author="dwivna">
+        <createTable tableName="personal_deduction_t">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="person_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="person_t" foreignKeyName="id"/>
+            </column>
+            <column name="fy_id" type="varchar(255)">
+                <constraints nullable="true" referencedTableName="financial_year_t" foreignKeyName="id"/>
+            </column>
+            <column name="month_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="en_month_t" foreignKeyName="id"/>
+            </column>
+            <column name="deduction_for" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deduction_amount" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <!--Added the entity personal_need_t-->
+    <changeSet id="20230228-4" author="dwivna">
+        <createTable tableName="personal_need_t">
+            <column name="id" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="person_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="person_t" foreignKeyName="id"/>
+            </column>
+            <column name="fy_id" type="varchar(255)">
+                <constraints nullable="true" referencedTableName="financial_year_t" foreignKeyName="id"/>
+            </column>
+            <column name="month_id" type="varchar(255)">
+                <constraints nullable="false" referencedTableName="en_month_t" foreignKeyName="id"/>
+            </column>
+            <column name="category" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="need_for" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="need_amount" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
